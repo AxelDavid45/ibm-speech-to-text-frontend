@@ -45,7 +45,7 @@
     </section>
     <section class="section">
         <h5>🎤Sube tu grabación</h5>
-        <form action="#">
+        <form action="#" id="speech" enctype="multipart/form-data">
             <div class="file-field input-field">
                 <div class="btn">
                     <span>Audio</span>
@@ -59,32 +59,37 @@
             <button class="waves-effect waves-light btn green darken-1">Subir</button>
         </form>
     </section>
+
     <section class="section">
         <h4>Esto es lo que encontramos para ti🔥</h4>
         <div class="divider"></div>
-        <div class="row">
-            <div class="col s3">
-                <div class="card horizontal">
-                    <div class="card-image">
-                        <img src="https://lorempixel.com/100/190/nature/6">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of
-                                information.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
+        <div id="yt-results">
+            <div class="row">
+                <h2>🚩Youtube</h2>
+                <div class="col s6">
+                    <div class="card-panel">
+                        <div class="video-container">
+                            <iframe id="ytplayer" type="text/html"
+                                    src="https://www.youtube.com/embed/S3jJj68dBxw"
+                                    frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
+                <div class="col s6">
+                    <div class="card-panel">
+                        <div class="video-container">
+                            <iframe id="ytplayer" type="text/html"
+                                    src="https://www.youtube.com/embed/BNx9R6_hEKs"
+                                    frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-
         </div>
-
-
     </section>
 </main>
 
+<script type="module" src="./js/index.js"></script>
 </body>
 </html>
