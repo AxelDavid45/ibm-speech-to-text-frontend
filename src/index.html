@@ -45,18 +45,20 @@
     </section>
     <section class="section">
         <h5>🎤Sube tu grabación</h5>
+        <div id="loader-audio" class="center-align">
+        </div>
         <form action="#" id="speech" enctype="multipart/form-data">
             <div class="file-field input-field">
                 <div class="btn">
-                    <span>Audio</span>
-                    <input type="file" id="file">
+                    <span id="start">Grabar</span>
+                </div>
+                <div class="btn red darken-1">
+                    <span id="stop">Detener y enviar</span>
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text"
-                    >
+                    <audio id="player" controls></audio>
                 </div>
-            </div>
-            <button class="waves-effect waves-light btn green darken-1">Subir</button>
+            </div>Ñ
         </form>
     </section>
 

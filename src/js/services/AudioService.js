@@ -3,20 +3,18 @@ const URL_API = 'https://ibm-challenge-backend.herokuapp.com/'
 class AudioService {
 	async upload (file) {
 		const url = `${URL_API}upload/`
-		const headers = new Headers({
-			'Content-Type': 'multipart/form-data',
-		});
 		const data = new FormData()
-
-		data.append('speech', file);
-
-		const request = await fetch(url, {
-			method: 'post',
-			headers: headers,
-			body: data,
-			redirect: 'follow'
-		});
-		console.log(request);
+		data.append('speech', file)
+		try {
+			const request = await fetch(url, {
+				method: 'POST',
+				body: data,
+				mode: 'cors'
+			});
+			return await request.json();
+		} catch (err) {
+			console.log(err);
+		}
 	}
 }
 
