@@ -55,20 +55,19 @@ async function analyzeText (text) {
     const response = await analyzer.analyze(JSON.stringify(payload))
     if (response.status === 200) {
       resultsTitle.style.display = 'block'
-      // TODO  call yt api
-      // insertLoader(youtubeResults);
+      // Call Youtube API
+      insertLoader(youtubeResults);
+      response.keywords.forEach(keyword => {
+        retrieveVideos(keyword.text)
+      });
+      deleteLoaderInserted(youtubeResults);
+
+      // Call Google API
       insertLoader(webSearchResults);
       response.keywords.forEach(keyword => {
-        // retrieveVideos(keyword.text)
         retrieveWebSearchResults(keyword.text);
       });
       deleteLoaderInserted(webSearchResults);
-      // deleteLoaderInserted(youtubeResults);
-      // insertLoader(webSearchResults);
-      // response.keywords.forEach(keyword => {
-      //   retrieveWebSearchResults(keyword.text);
-      // });
-      // deleteLoaderInserted(webSearchResults);
     }
   } catch (err) {
     console.log(err)

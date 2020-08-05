@@ -3,7 +3,7 @@ function renderVideos (response, keyword) {
   let html = `
 <div class="row">
 <h5>Busqueda usando <strong>${keyword} </strong>como palabra clave</h5>`;
-  response.items.forEach((searchResult) => {
+  response.items.forEach(searchResult => {
     html += `
     <div class="col s6">
                 <div class="card-panel">

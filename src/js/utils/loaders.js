@@ -6,7 +6,7 @@ function insertLoader(element) {
 }
 
 function deleteLoaderInserted() {
-  document.getElementById('loader-inserted').remove();
+    document.getElementById('loader-inserted').remove();
 }
 
 export {
