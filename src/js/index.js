@@ -2,21 +2,36 @@
 import AudioService from './services/AudioService.js'
 import AnalyzerService from './services/AnalyzerService.js'
 import YoutubeAPI from './services/YoutubeAPI.js'
+import WebSearch from './services/WebSearch.js';
 import { insertLoader, deleteLoaderInserted } from './utils/loaders.js';
 import renderVideos from './utils/renderVideos.js';
+import renderWebResults from './utils/renderWebResults.js';
 
 const speechAudio = document.getElementById('speech')
 const resultsTitle = document.getElementById('results-title');
+const webSearchTitle = document.getElementById('webSearch-title');
 const youtubeSectionTitle = document.getElementById('yt-results-title');
 const submitButton = document.getElementById('submit-btn')
 const file = document.getElementById('fileSource')
 const player = document.getElementById('player')
 const loader = document.getElementById('loader')
 const youtubeResults = document.getElementById('youtube-results');
+const webSearchResults = document.getElementById('webSearch-results');
 
 resultsTitle.style.display = 'none'
 youtubeSectionTitle.style.display = 'none';
+webSearchTitle.style.display = 'none';
 loader.style.display = 'none'
+async function retrieveWebSearchResults(keyword) {
+  try {
+    const webSearch = new WebSearch();
+    webSearchTitle.style.display = 'block';
+    const response = await webSearch.retrieveResults(keyword);
+    setTimeout(renderWebResults, 500, response, keyword);
+  } catch (err){
+    console.log(err);
+  }
+}
 
 async function retrieveVideos (keyword) {
   try {
@@ -41,11 +56,19 @@ async function analyzeText (text) {
     if (response.status === 200) {
       resultsTitle.style.display = 'block'
       // TODO  call yt api
-      insertLoader(youtubeResults);
+      // insertLoader(youtubeResults);
+      insertLoader(webSearchResults);
       response.keywords.forEach(keyword => {
-        retrieveVideos(keyword.text)
+        // retrieveVideos(keyword.text)
+        retrieveWebSearchResults(keyword.text);
       });
-      deleteLoaderInserted(youtubeResults);
+      deleteLoaderInserted(webSearchResults);
+      // deleteLoaderInserted(youtubeResults);
+      // insertLoader(webSearchResults);
+      // response.keywords.forEach(keyword => {
+      //   retrieveWebSearchResults(keyword.text);
+      // });
+      // deleteLoaderInserted(webSearchResults);
     }
   } catch (err) {
     console.log(err)

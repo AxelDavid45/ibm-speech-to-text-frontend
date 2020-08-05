@@ -1,5 +1,5 @@
 'use strict'
-const URL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=:1';
+const URL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=:1';
 const KEY = 'AIzaSyCNWIjYtQeEU-LjLWnRYa28GT7G91b7hL8'
 class YoutubeAPI {
   async retrieveVideos(query) {
