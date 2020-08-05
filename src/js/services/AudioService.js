@@ -16,6 +16,19 @@ class AudioService {
 			console.log(err);
 		}
 	}
+
+	async retrieveResult(id) {
+		const url = `${URL_API}status/${id}`
+		try {
+			const request = await fetch(url, {
+				method: 'GET',
+				mode: 'cors'
+			});
+			return await request.json();
+		} catch (err) {
+			console.log(err);
+		}
+	}
 }
 
 export default AudioService
